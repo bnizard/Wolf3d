@@ -82,16 +82,18 @@ void	print_map(int **tab)
 
 	i = 1;
 	j = 0;
-	printf("%d\n", tab[0][0]);
+	ft_putnbr(tab[0][0]);
+	write(1, "\n", 2);
 	while (i <= tab[0][0])
 	{
 		while (j <= tab[i][0])
 		{
-			printf("%d ", tab[i][j]);
+			ft_putnbr(tab[i][j]);
+			write(1, " ", 1);
 			j++;
 		}
 		j = 0;
-		printf("\n");
+		write(1, "\n", 1);
 		i++;
 	}
 }

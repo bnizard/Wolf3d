@@ -61,6 +61,8 @@ int		check_validity_map(char *file);
 */
 float	ft_modulo(float angle);
 float	convert_in_radian(float angle);
+void	ft_putnbr(int n);
+void	ft_putchar(char c);
 
 /*
 **		libft

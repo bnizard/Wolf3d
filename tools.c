@@ -12,6 +12,7 @@
 
 #include "wolf3d.h"
 #include "math.h"
+#include "unistd.h"
 
 float	ft_modulo(float angle)
 {
@@ -28,4 +29,25 @@ float	ft_modulo(float angle)
 float	convert_in_radian(float angle)
 {
 	return (angle = M_PI * angle / 180);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n < 10)
+		ft_putchar(48 + n);
+	else
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
 }
