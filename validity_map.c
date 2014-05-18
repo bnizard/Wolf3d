@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validity_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnizard <bnizard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dmellado <dmellado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/05/14 20:10:10 by bnizard           #+#    #+#             */
-/*   Updated: 2014/05/14 23:28:29 by bnizard          ###   ########.fr       */
+/*   Created: 2014/05/14 20:10:10 by dmellado          #+#    #+#             */
+/*   Updated: 2014/05/18 19:01:59 by dmellado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,26 +95,27 @@ int		check_wall_in_border(int **map)
 {
 	int		x;
 	int		y;
+	int		error;
 
 	y = 1;
+	error = 0;
 	while (y <= map[0][0])
 	{
 		x = 1;
 		while (x < map[y][0])
 		{
 			if ((y == 1 || y == map[0][0]) && map[y][x] != 1)
-			{
-				write(1, "Pls put in all around the map a wall block.\n", 45);
-				return (-1);
-			}
+				error++;
 			else if (map[y][1] != 1 || map[y][map[y][0]] != 1)
-			{
-				write(1, "Pls put in all around the map a wall block.\n", 45);
-				return (-1);
-			}
+				error++;
 			x++;
 		}
 		y++;
+	}
+	if (error > 0 || y < 3)
+	{
+		write(1, "Pls put in all around the map a wall block.\n", 45);
+		return (-1);
 	}
 	return (0);
 }
